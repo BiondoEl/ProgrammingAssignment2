@@ -46,4 +46,3 @@ retrievematrixinv <- function(x, ...) {
   return(inv)
 }
 
-
