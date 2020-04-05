@@ -36,8 +36,8 @@ retrievematrixinv <- function(x, ...) {
   }
   
   # define inverse of matrix
-  matrixdata <- x$getinv()
-  inv <- solve(matrixdata, ...)
+  m <- x$get()
+  inv <- solve(m, ...)
   
   #cache inverse of matrix
   x$setinv(inv)
@@ -46,3 +46,25 @@ retrievematrixinv <- function(x, ...) {
   return(inv)
 }
 
+
+#TEST
+
+#matrixdata <- matrix(1:4, nrow = 2, ncol = 2, byrow = TRUE) #defines test matrix
+#matrixdata2 <- makeCacheMatrix(matrixdata) #adds test matrix as arg to function, creates cache
+
+#matrixdata2$get() 
+#> matrixdata2$get()
+#     [,1] [,2]
+#[1,]    1    2
+#[2,]    3    4
+
+#retrievematrixinv(matrixdata2) #retrieves inverse
+# > retrievematrixinv(matrixdata2) --- no cache
+#[,1] [,2]
+#[1,] -2.0  1.0
+#[2,]  1.5 -0.5
+#> retrievematrixinv(matrixdata2) --- cached data, gets message
+#getting cached matrix
+#[,1] [,2]
+#[1,] -2.0  1.0
+#[2,]  1.5 -0.5
